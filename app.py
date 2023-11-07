@@ -1,5 +1,6 @@
 import naver_api
 import json
+import db
 from flask import Flask, request, render_template
 app = Flask(__name__)
 
@@ -19,11 +20,13 @@ def blogpage():
 def news():
     if request.method == 'GET':
         query = request.args["query"]
-        print(query)
+        # print(query)
+        db.save(query)
         # 검색어를 받아서 네이버 api 함수에 전달하면 좋을것 같다
         json_data = naver_api.news(query)
         dic1 = json.loads(json_data)
         j_list = dic1['items']
+        db.find_all()
         # titles = ''
         # for data in j_list:
         #     titles += data['title'] + '<br>'
