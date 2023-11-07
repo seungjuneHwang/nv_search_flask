@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2><font color='red'> {{query}} </font> {{type}} 검색결과</h2>
+{% for news in newslist %}
+<a href="{{ news['link'] }}" target="_blank">{{ news['title'] }}</a><br><br>
+{% endfor %}
+<br>
+<a href="/">뒤로가기</a>
+</body>
+</html>
